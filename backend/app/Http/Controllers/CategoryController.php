@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function index(): JsonResponse
     {
-        $categories = $this->category->all();
+        $categories = $this->category->with('products')->get();
 
         return response()->json($categories, Response::HTTP_OK);
     }
@@ -45,8 +45,6 @@ class CategoryController extends Controller
     public function show(string $id): JsonResponse
     {
         $category = $this->category->findOrFail($id);
-
-        
 
         return response()->json($category, Response::HTTP_OK);
     }
