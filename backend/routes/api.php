@@ -38,4 +38,6 @@ Route::get('/category/{id}', [CategoryController::class, 'show']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 
+// Rotas de compra (Fazer depois)
+
 require __DIR__.'/auth.php';

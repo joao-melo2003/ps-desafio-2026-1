@@ -12,11 +12,7 @@ export const metadata: Metadata = {
   description: 'Created by Adapti 2024',
 }
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default async function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
   return (
     <html lang="pt-BR">
       <body className={arimo.className}>

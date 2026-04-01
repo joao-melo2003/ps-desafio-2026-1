@@ -1,0 +1,72 @@
+.nav {
+
+    background-color: white;
+
+    height: 1015px;
+    max-width: 250px;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    left: 5px;
+    top: 5px;
+
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+    border: 10px none solid;
+    border-radius: 15px;
+
+}
+
+.logo {
+
+    position: absolute;
+    left: 63px;
+    top: 10px;
+
+}
+
+.contraste {
+
+    background-color: rgb(100, 100, 100, 10%);
+
+    height: 115px;
+    width: 100%;
+
+    position: absolute;
+    right: 0px;
+    top: 0px;
+
+    border-bottom: 1px solid rgb(100, 100, 100, 25%);
+    border-radius: 15px 15px 10px 10px;
+
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(100, 100, 100, 0.3);
+
+    z-index: 2;
+}
+
+.busca {
+
+    width: 235px;
+    height: 33px;
+
+    position: relative;
+    top: 120px;
+    right: 13px;
+
+    border: 1px solid gray;
+    border-radius: 7px;
+
+    padding-left:32px;
+}
+
+.lupa{
+
+    position: relative;
+    top: 93px;
+    right: 6px;
+
+}
