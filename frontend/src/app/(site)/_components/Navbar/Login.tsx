@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function(){
     return (
-        <div className={styles.conteinertBotao}>
+        <div className={styles.conteinerBotao}>
             <button className={styles.botao}>Login</button>
         </div>
     )

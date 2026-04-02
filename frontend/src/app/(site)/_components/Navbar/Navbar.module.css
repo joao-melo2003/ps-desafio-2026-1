@@ -1,44 +1,45 @@
 .nav {
 
-    background-color: rgb(200, 200, 200, 10%);
+    background-color: rgba(240, 241, 243, 5%);
 
-    height: 850px;
-    width: 250px;
+    height: 76.2vh;
+    width: 14vw;
 
     display: flex;
     flex-direction: column;
 
-    position: relative;
     margin-left: 10px;
     margin-top: 20px;
 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
-    border: 1px gray solid;
+    border: 1px rgb(150, 150, 150, 30%) solid;
     border-radius: 15px;
 
 }
 
 .logo {
 
-    position: absolute;
-    left: 63px;
-    top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     z-index: -1;
+}
+
+.conteinerBusca {
+    margin-left: 6px;
+    margin-bottom: 10px;
+    position: relative;
+    width: 95%;
 
 }
 
 
 .busca {
 
-    width: 235px;
-    height: 33px;
-
-    position: relative;
-    top: 120px;
-    right: 13px;
-
-    margin-left: 20px;
+    width: 100%;
+    height: 40px;
 
     border: 1px solid rgba(100, 100, 100, 55%);
     border-radius: 7px;
@@ -48,37 +49,31 @@
 
 .lupa {
 
-    position: relative;
-    top: 93px;
-    right: 6px;
-    margin-left: 20px;
+    position: absolute;
+    left: 7px;
+    top: 78%;
 
+    transform: translateY(-50%);
 }
 
 .barraCategorias {
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    width: 100%;
+    height: 50%;
 
+    display: flex;
+    flex-direction: column;
 
-    width: 247px;
-    height: 350px;
-    
-    margin-left: 21px;
-
-    position: relative;
-    top: 115px;
-    right: 20px;
-
+    margin-bottom: 20px;
 }
 
 .tituloCategorias {
 
-    position: relative;
-
     color: rgba(50, 50, 50);
 
-    margin-left: 70px;
+    margin: 15px 0 10px 0;
+
+    text-align: center;
 
     font-size: large;
     font-weight: bold;
@@ -86,44 +81,58 @@
 }
 
 .listaNomeCategorias {
-    max-height: 350px;
+
+    flex: 1;
+
+    border-radius: 15px;
+
     overflow-y: auto;
+    overscroll-behavior: none;
 }
 
 .nomeCategorias {
 
     color: black;
-    background-color: rgb(200, 200, 200, 10%);
+    background-color: rgb(200, 200, 200, 15%);
 
     height: 40px;
-    
+    width: 100%;
+
     padding-left: 15px;
     padding-top: 5px;
+
     transition: all 0.3s ease;
-
-
 }
 
 .nomeCategorias:hover {
 
     background-color: rgba(50, 50, 50, 10%);
     font-size: large;
-    padding-top: 10px;
     height: 50px;
+    padding-top: 12px;
 
 }
 
-.conteinertBotao{
-    
-    margin-top: 400px;
+.conteinerBotao {
+
+    background-color: rgba(150, 150, 150, 10%);
+
+    margin-top: auto;
+
+    width: 100%;
     height: 50px;
 
-    border-radius: 15px ;
+    border-radius: 15px;
 
-    background-color:rgba(100, 100, 100, 5%);
+    transition: all 0.3s ease;
 }
 
-.botao{
+.conteinerBotao:hover{
+    height: 55px;
+    font-size: large;
+}
+
+.botao {
 
     color: black;
     width: 100%;

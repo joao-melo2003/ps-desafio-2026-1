@@ -12,8 +12,6 @@ export default function Navbar(){
             <Search/>
             <Categories/>
             <Login/>
-        
-
         </nav>
     )
 }
