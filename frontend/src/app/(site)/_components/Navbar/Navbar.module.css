@@ -1,0 +1,133 @@
+.nav {
+
+    background-color: rgb(200, 200, 200, 10%);
+
+    height: 850px;
+    width: 250px;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    margin-left: 10px;
+    margin-top: 20px;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+    border: 1px gray solid;
+    border-radius: 15px;
+
+}
+
+.logo {
+
+    position: absolute;
+    left: 63px;
+    top: 10px;
+    z-index: -1;
+
+}
+
+
+.busca {
+
+    width: 235px;
+    height: 33px;
+
+    position: relative;
+    top: 120px;
+    right: 13px;
+
+    margin-left: 20px;
+
+    border: 1px solid rgba(100, 100, 100, 55%);
+    border-radius: 7px;
+
+    padding-left: 32px;
+}
+
+.lupa {
+
+    position: relative;
+    top: 93px;
+    right: 6px;
+    margin-left: 20px;
+
+}
+
+.barraCategorias {
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+
+    width: 247px;
+    height: 350px;
+    
+    margin-left: 21px;
+
+    position: relative;
+    top: 115px;
+    right: 20px;
+
+}
+
+.tituloCategorias {
+
+    position: relative;
+
+    color: rgba(50, 50, 50);
+
+    margin-left: 70px;
+
+    font-size: large;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.listaNomeCategorias {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.nomeCategorias {
+
+    color: black;
+    background-color: rgb(200, 200, 200, 10%);
+
+    height: 40px;
+    
+    padding-left: 15px;
+    padding-top: 5px;
+    transition: all 0.3s ease;
+
+
+}
+
+.nomeCategorias:hover {
+
+    background-color: rgba(50, 50, 50, 10%);
+    font-size: large;
+    padding-top: 10px;
+    height: 50px;
+
+}
+
+.conteinertBotao{
+    
+    margin-top: 400px;
+    height: 50px;
+
+    border-radius: 15px ;
+
+    background-color:rgba(100, 100, 100, 5%);
+}
+
+.botao{
+
+    color: black;
+    width: 100%;
+    height: 100%;
+
+    font-weight: bold;
+}
