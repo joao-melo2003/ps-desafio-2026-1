@@ -1,0 +1,60 @@
+.painelGeral {
+    
+    background-color: rgba(100,100,100,10%);
+
+    height: 21%;
+    width: 98%;
+
+    margin: 10px 0 0 15px;
+
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.slider{
+
+    height: 65%;
+
+    margin-top: 15px;
+}
+
+.listaProdutos{
+
+    background-color: rgba(128,128,128,20%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    height: 13%;
+
+    margin: 22px 40px 0;
+}
+
+.produtos {
+
+    color: black;
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    padding: 10px 20px;
+
+    transition: all 0.4s ease;
+    
+}
+
+.produtos:hover {
+    
+
+    transform: translateY(-1px);
+
+    background-color: rgba(128,128,128,20%);
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
