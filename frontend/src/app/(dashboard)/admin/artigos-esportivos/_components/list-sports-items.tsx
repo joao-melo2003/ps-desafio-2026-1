@@ -1,3 +1,5 @@
+'use client'
+
 import { DashboardContainer } from '@/components/dashboard/dashboard-items'
 import {
   TabbleCellImage,
@@ -17,19 +19,31 @@ import { DialogUpdateSportsItem } from './dialog-update-sports-item'
 import { DialogSportsItemDelete } from './dialog-delete-sports-item'
 import { DialogInformationSportsItem } from './dialog-information-sports-item'
 import { DialogCreateSportsItem } from './dialog-create-sports-item'
+import { useEffect, useState } from 'react'
 
 export default async function ListSportsItems() {
-  const { response } = null // requisicao para api
+  const [products, setProducts] = useState<sportsItemType[]>([]);
 
-  if (!response) {
+  useEffect (()=>{
+    async function getProducts(){
+      const {response, error} = await api('GET','/products');
+
+      if(response){
+        setProducts(response as sportsItemType[])
+      }else{
+        console.error(error?.message);
+      }
+    }
+    getProducts();
+  },[])
+
+  if (!products) {
     return (
       <DashboardContainer className="text-destructive">
         Não foi possível obter os imóveis.
       </DashboardContainer>
     )
   }
-
-  const sportsItems: sportsItemType[] = response
 
   return (
     <>
@@ -46,24 +60,26 @@ export default async function ListSportsItems() {
           <TableHeader>
             <TableRow>
               <TableHead>Imagem</TableHead>
-              <TableHead>Titulo</TableHead>
+              <TableHead>Nome</TableHead>
               <TableHead>Categoria</TableHead>
+              <TableHead>Preco</TableHead>
+              <TableHead>ano</TableHead>
               <TableHead>Quantidade</TableHead>
               <TableHead className="text-right">Ações</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {sportsItems?.map((sportsItem: sportsItemType) => (
+            {products?.map((sportsItem: sportsItemType) => (
               <TableRow key={sportsItem.id}>
                 <TableCell>
-                  <TabbleCellImage src={sportsItem.image} />
+                  <TabbleCellImage src={sportsItem.imagem} />
                 </TableCell>
                 
-                <TableCell>{sportsItem.title}</TableCell>
-                <TableCell>{sportsItem.amount}</TableCell>
+                <TableCell>{sportsItem.name}</TableCell>
                 <TableCell>{sportsItem.category.name}</TableCell>
-                {/* demais propriedades de sportsItemType */}
-                
+                <TableCell>{sportsItem.preco}</TableCell>
+                <TableCell>{sportsItem.ano}</TableCell>
+                <TableCell>{sportsItem.quantidade}</TableCell>
                 <TableCell className="flex justify-end gap-2">
                   <DialogInformationSportsItem id={sportsItem.id}>
                     <Button variant="default-inverse" size="icon">
@@ -84,7 +100,7 @@ export default async function ListSportsItems() {
               </TableRow>
             ))}
           </TableBody>
-          {!sportsItems.length && (
+          {!products.length && (
             <TableCaption>Nenhum artigo esportivo encontrado.</TableCaption>
           )}
         </Table>

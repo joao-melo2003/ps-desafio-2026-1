@@ -1,0 +1,44 @@
+.sale{
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    gap: 5px
+}
+
+.vitrine{
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 23px;
+
+
+    width: 83%;
+    height: 70%;
+    margin: 20px 0 0 20px;
+
+    overflow-y: auto;
+    overscroll-behavior: none;
+}
+
+.promocoes{
+    outline: 1px solid red;
+
+    margin: 15px;
+
+    height: 70%;
+    width: 13.5%;
+    
+}
+
+.produto{
+   
+    background-color: RED;
+
+    height: 320px;
+    width: 280px;
+    border: 1px solid black;
+    
+}

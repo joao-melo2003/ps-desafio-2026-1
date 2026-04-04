@@ -1,24 +1,19 @@
-import styles from "./_components/layoutCss/Layout.module.css"
+"use client";
+
+import styles from "./_components/layoutCss/Layout.module.css";
 import Navbar from "./_components/Navbar/Navbar";
-import Panel from "./_components/TopPanel/Panel";
+import { usePathname } from "next/navigation";
 
-export default function SiteLayout({children}:{children:React.ReactNode}){
-    return(
+export default function SiteLayout({ children }: { children: React.ReactNode }) {
+    const pathname = usePathname();
+
+    const hideNavbar = pathname.startsWith("/auth");
+
+    return (
         <div className={styles.layout}>
-            
-            <Navbar/>
-            
-            <main className={styles.conteudoPrincipal}>
-
-                <Panel/>
-
-                
-            </main>
-
-
-            <footer>
-                
-            </footer>
+            {!hideNavbar && <Navbar />}
+            {children}
+            <footer></footer>
         </div>
-    )
+    );
 }
