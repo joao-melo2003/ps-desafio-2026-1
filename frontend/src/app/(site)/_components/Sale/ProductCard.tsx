@@ -13,4 +13,14 @@ export default function ProductCard({name,preco,imagem, category}: sportsItemTyp
     )
 }
 
+/*
+id: string;
+name: string;
+preco: number;
+ano: string;
+imagem: string;
+categoria_id: string;
+quantidade: number
+*/
+
 

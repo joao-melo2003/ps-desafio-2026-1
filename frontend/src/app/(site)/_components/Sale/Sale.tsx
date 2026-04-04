@@ -29,15 +29,12 @@ export default function Sale(){
         <section className={styles.sale}>
             <div className={styles.vitrine}>
                 {
-                    products.map((produto) => (
-                        <ProductCard key={produto.id} {...produto}/>
-                    )
-                )}
-
+                    products.map((produto) => (<ProductCard key={produto.id} {...produto}/>))
+                }
             </div>
 
             <div className={styles.promocoes}>
-                
+                {/* Promocoes aqui */}
 
             </div>
 
@@ -45,13 +42,3 @@ export default function Sale(){
         </section>
     )
 }
-
-/*
-id: string;
-name: string;
-preco: number;
-ano: string;
-imagem: string;
-categoria_id: string;
-quantidade: number
-*/

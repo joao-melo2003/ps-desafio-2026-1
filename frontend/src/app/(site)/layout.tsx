@@ -12,7 +12,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     return (
         <div className={styles.layout}>
             {!hideNavbar && <Navbar />}
+            
             {children}
+
             <footer></footer>
         </div>
     );
