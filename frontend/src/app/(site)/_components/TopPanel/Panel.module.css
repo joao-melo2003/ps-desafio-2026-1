@@ -1,6 +1,6 @@
 .painelGeral {
-    
-    background-color: rgba(100,100,100,10%);
+
+    background-color: rgba(100, 100, 100, 10%);
 
     height: 21%;
     width: 98%;
@@ -11,50 +11,129 @@
 
     display: flex;
     flex-direction: column;
-   
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
 }
 
-.slider{
+.slider {
 
     height: 65%;
 
     margin-top: 15px;
 }
 
-.listaProdutos{
-
-    background-color: rgba(128,128,128,20%);
+.listaProdutos {
+    background-color: rgba(128, 128, 128, 20%);
 
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
 
-    gap: 3px;
+    position: relative;
 
     height: 13%;
-
     margin-top: 22px;
 }
 
+.listaProdutosInterna {
+
+
+    display: flex;
+
+    gap: 2px;
+
+    margin: 0 70px;
+
+    max-width: 98%;
+
+    overflow-x: hidden;
+
+}
+
 .produtos {
+
 
     color: black;
     display: flex;
     align-items: center;
 
     height: 100%;
-    padding: 10px 20px;
+    padding: 10px;
 
     transition: all 0.4s ease;
-    
+
 }
 
 .produtos:hover {
-    
+
 
     transform: translateY(-1px);
 
-    background-color: rgba(128,128,128,20%);
+    background-color: rgba(128, 128, 128, 20%);
 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.setaDireita {
+
+    width: 3%;
+    height: 100%;
+
+    position: absolute;
+    right: 0;
+
+    margin-left: 15px;
+
+}
+
+.setaEsquerda {
+    width: 3%;
+    height: 100%;
+
+    position: absolute;
+    left: 0;
+
+}
+
+.setaImagemDireita {
+    transform: rotate(90deg);
+
+}
+
+.setaImagemEsquerda {
+    transform: rotate(-90deg);
+}
+
+.botaoSeta {
+
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botaoSeta:active{
+    transform: translateY(3px);
+
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+    
+}
+
+.setaDireita:hover {
+    transform: translateY(-1px);
+
+    background-color: rgba(128, 128, 128, 20%);
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.setaEsquerda:hover {
+    transform: translateY(-1px);
+
+    background-color: rgba(128, 128, 128, 20%);
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }

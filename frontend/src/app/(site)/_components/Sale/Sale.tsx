@@ -5,8 +5,11 @@ import ProductCard from './ProductCard';
 import { sportsItemType } from '@/types/sportsItem';
 import { useEffect, useState } from 'react';
 import { api } from '@/services/api'
+import { useCategory } from "@/app/(site)/_components/Navbar/CategoryContext";
 
 export default function Sale(){
+
+    const { categoriaSelecionada, search } = useCategory();
 
     const [products, setProducts] = useState<sportsItemType[]>([]);
 
@@ -25,20 +28,26 @@ export default function Sale(){
     }, [])
 
 
+    const produtosFiltrados = products.filter(p => {
+        const matchCategoria = categoriaSelecionada? p.category.id === categoriaSelecionada: true;
+
+        const matchNome = search ? p.name.toLowerCase().includes(search.toLowerCase()) : true;
+
+        return matchCategoria && matchNome;
+    });
+
     return(
         <section className={styles.sale}>
             <div className={styles.vitrine}>
                 {
-                    products.map((produto) => (<ProductCard key={produto.id} {...produto}/>))
+                    produtosFiltrados.map((produto) => (<ProductCard key={produto.id} {...produto}/>))
                 }
             </div>
 
             <div className={styles.promocoes}>
-                {/* Promocoes aqui */}
-
+                {/*promocoes*/}
             </div>
-
-
         </section>
     )
 }
+

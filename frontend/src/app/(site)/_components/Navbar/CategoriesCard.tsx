@@ -1,11 +1,12 @@
 import styles from './Navbar.module.css'
-import { categoryType } from '@/types/category'
+import { useCategory } from "./CategoryContext";
 
 
-export default function CategoriesCard(categoria:categoryType){
+export default function CategoriesCard({ id, name, onClick }: any){
+    const { categoriaSelecionada } = useCategory();
 
     return(
-        
-        <p className={styles.nomeCategorias}>{categoria.name}</p>
+        <button onClick={onClick} className={`${styles.nomeCategorias} ${categoriaSelecionada === id ? styles.ativa : ""}`}> {name}</button>
     )
 }
+
