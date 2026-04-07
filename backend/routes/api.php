@@ -19,7 +19,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::apiResource('/users', UserController::class);
     Route::apiResource('/category', CategoryController::class)->except(['index', 'show']);
-    Route::apiResource('/products', ProductController::class)->except(['index', 'show']);
+    Route::apiResource('/products', ProductController::class)->except(['index', 'show','buy']);
 });
 
 // cria um usuario
@@ -38,6 +38,8 @@ Route::get('/category/{id}', [CategoryController::class, 'show']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 
-// Rotas de compra (Fazer depois)
+// Rotas de compra
+
+Route::post('/products/{id}', [ProductController::class,'buy']);
 
 require __DIR__.'/auth.php';

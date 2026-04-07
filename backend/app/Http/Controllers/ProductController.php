@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+use Pest\Support\Str;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
@@ -92,5 +93,12 @@ class ProductController extends Controller
         $product->delete();
 
         return response()->json(['Message' => 'Produto deletado com sucesso']);
+    }
+
+    public function buy(string $id)
+    {
+        $product = $this->product->findOrFail($id);
+        $product->quantidade = $product->quantidade-1;
+        $product->save();
     }
 }
