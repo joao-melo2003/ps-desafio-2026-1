@@ -9,13 +9,17 @@ import { useCategory } from "@/app/(site)/_components/Navbar/CategoryContext";
 
 export default function Sale(){
 
-    const { categoriaSelecionada, search } = useCategory();
+    const {categoriaSelecionada, search } = useCategory();
 
     const [products, setProducts] = useState<sportsItemType[]>([]);
+
+    const ITENS_MAX = 12;
+    const [paginaAtual, setPaginaAtual] = useState(0);
 
     useEffect(()=>{
         async function getProducts(){
             const {response, error} = await api('GET', '/products');
+            
 
             if(response){
                 setProducts(response as sportsItemType[]);
@@ -28,26 +32,61 @@ export default function Sale(){
     }, [])
 
 
+    async function comprarProduto(id: string) {
+        const response = await fetch(`http://localhost:8000/api/products/${id}/buy`, {method: 'POST'});
+
+        if (!response) {
+            console.error();
+            return;
+        }
+        
+        setProducts(prev => prev.map(prod => prod.id === id ? { ...prod, quantidade: prod.quantidade - 1 }: prod));
+    }
+
+    useEffect(() => {setPaginaAtual(0);
+
+    }, [categoriaSelecionada, search]);
+
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [paginaAtual]);
+
+
+    
     const produtosFiltrados = products.filter(p => {
         const matchCategoria = categoriaSelecionada? p.category.id === categoriaSelecionada: true;
 
-        const matchNome = search ? p.name.toLowerCase().includes(search.toLowerCase()) : true;
+        const matchNome = search ? p.name.toLowerCase().includes(search.toLowerCase()): true;
 
         return matchCategoria && matchNome;
     });
 
+    const numeroPaginas = Math.ceil(produtosFiltrados.length / ITENS_MAX);
+
+    const inicio = paginaAtual * ITENS_MAX;
+    const fim = inicio + ITENS_MAX;
+
+    const produtosPagina = produtosFiltrados.slice(inicio, fim);
+
+
     return(
         <section className={styles.sale}>
             <div className={styles.vitrine}>
+
                 {
-                    produtosFiltrados.map((produto) => (<ProductCard key={produto.id} {...produto}/>))
+                    produtosPagina.map((produto) => ( <ProductCard artigoEsportivoCompra={comprarProduto} key={produto.id} {...produto}/>))
+                }
+                
+            </div>
+
+            <div className={styles.listPage}>
+                {
+                    Array.from({ length: numeroPaginas }).map((_,index) => (
+                    <button key={index} onClick={() => setPaginaAtual(index)} className={styles.pages}>{index + 1}</button>))
                 }
             </div>
 
-            <div className={styles.promocoes}>
-                {/*promocoes*/}
-            </div>
         </section>
     )
 }
-

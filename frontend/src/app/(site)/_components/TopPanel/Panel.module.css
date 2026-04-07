@@ -16,8 +16,8 @@
 
 }
 
-.slider {
-
+.banner {
+    outline: 1px solid red;
     height: 65%;
 
     margin-top: 15px;
@@ -32,8 +32,8 @@
 
     position: relative;
 
-    height: 13%;
-    margin-top: 22px;
+    height: 20%;
+    margin: 20px 0;
 }
 
 .listaProdutosInterna {
@@ -72,68 +72,62 @@
 
     background-color: rgba(128, 128, 128, 20%);
 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
 }
 
-.setaDireita {
-
-    width: 3%;
-    height: 100%;
-
+.setaEsquerda, .setaDireita {
     position: absolute;
-    right: 0;
+    top: 0;
+    height: 100%;
+    width: 40px; 
 
-    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    z-index: 10;
 }
 
 .setaEsquerda {
-    width: 3%;
+    left: 0;
+}
+
+.setaDireita {
+    right: 0;
+}
+
+.botaoSeta {
+    width: 100%;
     height: 100%;
 
-    position: absolute;
-    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.botaoSeta img {
+    width: 60%;
+    height: auto;
 }
 
 .setaImagemDireita {
     transform: rotate(90deg);
-
 }
 
 .setaImagemEsquerda {
     transform: rotate(-90deg);
 }
 
-.botaoSeta {
-
-    width: 100%;
-    height: auto;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.botaoSeta:hover {
+    background-color: rgba(0,0,0,0.05);
 }
 
-.botaoSeta:active{
-    transform: translateY(3px);
-
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
-    
-}
-
-.setaDireita:hover {
-    transform: translateY(-1px);
-
-    background-color: rgba(128, 128, 128, 20%);
-
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.setaEsquerda:hover {
-    transform: translateY(-1px);
-
-    background-color: rgba(128, 128, 128, 20%);
-
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.botaoSeta:active {
+    transform: scale(0.95);
 }

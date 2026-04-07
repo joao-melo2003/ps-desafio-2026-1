@@ -37,11 +37,12 @@ export default function Panel(){
     return(
         <section className={styles.painelGeral}>
 
-            <div className={styles.slider}>
+            <div className={styles.banner}>
 
 
                 
             </div>
+
             <div className={styles.listaProdutos}>
      
 
@@ -52,18 +53,26 @@ export default function Panel(){
                     }
                     
                 </div>
-                
-                <div className={styles.setaEsquerda} hidden={paginaAtual === 0}>
-                    <button className={styles.botaoSeta} onClick={() => setPaginaAtual((prev) => Math.max(prev - 1, 0))}>
-                        <Image src = '/assets/images/seta.png' alt='Logo' width={20} height={75} className={styles.setaImagemEsquerda}/>
-                    </button>
-                </div>
 
-                <div className={styles.setaDireita} hidden={(paginaAtual + 1) * ITENS_MAX >= products.length}>
-                    <button className={styles.botaoSeta} onClick={() => setPaginaAtual((prev) => (prev + 1) * ITENS_MAX < products.length ? prev + 1 : prev)}>
-                        <Image src = '/assets/images/seta.png' alt='Logo' width={20} height={75} className={styles.setaImagemDireita}/>
-                    </button>
-                </div>
+                {
+                    paginaAtual > 0 && (
+                        <div className={styles.setaEsquerda}>
+                            <button className={styles.botaoSeta} onClick={() => setPaginaAtual((prev) => Math.max(prev - 1, 0))}>
+                                <Image src='/assets/images/seta.png' alt='Voltar' width={30} height={30} className={styles.setaImagemEsquerda}/>
+                            </button>
+                        </div>
+                    )
+                }
+
+               {
+                    (paginaAtual + 1) * ITENS_MAX < products.length && (
+                        <div className={styles.setaDireita} hidden={(paginaAtual + 1) * ITENS_MAX >= products.length}>
+                            <button className={styles.botaoSeta} onClick={() => setPaginaAtual((prev) =>(prev + 1) * ITENS_MAX < products.length ? prev + 1 : prev)}>
+                                <Image src='/assets/images/seta.png' alt='Avançar'  width={30} height={30} className={styles.setaImagemDireita}/>
+                            </button>
+                        </div>
+                    )
+               }
                     
             </div>
 
@@ -71,4 +80,3 @@ export default function Panel(){
         </section>
     )
 }
-
