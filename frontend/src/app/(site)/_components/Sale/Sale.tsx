@@ -6,6 +6,7 @@ import { sportsItemType } from '@/types/sportsItem';
 import { useEffect, useState } from 'react';
 import { api } from '@/services/api'
 import { useCategory } from "@/app/(site)/_components/Navbar/CategoryContext";
+import {comprarProdutoAction} from "./buy"
 
 export default function Sale(){
 
@@ -13,7 +14,7 @@ export default function Sale(){
 
     const [products, setProducts] = useState<sportsItemType[]>([]);
 
-    const ITENS_MAX = 12;
+    const ITENS_MAX = 6;
     const [paginaAtual, setPaginaAtual] = useState(0);
 
     useEffect(()=>{
@@ -33,15 +34,16 @@ export default function Sale(){
 
 
     async function comprarProduto(id: string) {
-        const response = await fetch(`http://localhost:8000/api/products/${id}/buy`, {method: 'POST'});
+        const result = await comprarProdutoAction(id);
 
-        if (!response) {
-            console.error();
+        if (!result.success) {
+            console.error("Erro na compra") 
             return;
         }
-        
-        setProducts(prev => prev.map(prod => prod.id === id ? { ...prod, quantidade: prod.quantidade - 1 }: prod));
+
+        setProducts(prev => prev.map(prod => prod.id === id ? { ...prod, quantidade: prod.quantidade - 1 } : prod));
     }
+    
 
     useEffect(() => {setPaginaAtual(0);
 
@@ -77,7 +79,7 @@ export default function Sale(){
                 {
                     produtosPagina.map((produto) => ( <ProductCard artigoEsportivoCompra={comprarProduto} key={produto.id} {...produto}/>))
                 }
-                
+
             </div>
 
             <div className={styles.listPage}>
@@ -90,3 +92,5 @@ export default function Sale(){
         </section>
     )
 }
+
+

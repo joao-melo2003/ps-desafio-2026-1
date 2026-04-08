@@ -21,11 +21,11 @@ export default function Search(){
 
     return(
         <div className={styles.conteinerBusca}>
-            <input type='text' id='busca'className={styles.busca} placeholder="Pesquisar" defaultValue={search}onKeyDown={handleSearch}/>
+            <input type='text' id='busca'className={styles.busca} placeholder="Pesquisar" defaultValue={search} onKeyDown={handleSearch}/>
 
             <div className={styles.lupa}>
                 <button onClick={handleClick}>
-                    <Image src = '/assets/images/Lupa.png' alt='Logo' width={20} height={75}/>
+                    <img src = '/assets/images/Lupa.png' alt='Logo'></img>
                 </button>
             </div>
         </div>

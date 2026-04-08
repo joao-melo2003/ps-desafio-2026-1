@@ -5,8 +5,7 @@
     height: 100%;
     width: 100%;
 
-
-    gap: 40px
+    gap: 5px;
 }
 
 .vitrine{
@@ -16,12 +15,13 @@
     flex-direction: row;
 
     justify-content: center;
+    align-items: center;
 
     gap: 23px;
 
 
     width: 95%;
-    height: 80%;
+    height: 90%;
     margin: 20px 0 0 20px;
 
     overflow-y: auto;
@@ -148,6 +148,10 @@
     background: #e74c3c;
 }
 
+.esgotado:active {
+    transform: scale(1);
+}
+
 .listPage{
     display:flex;
     align-items: center;
@@ -157,27 +161,24 @@
     width: 95%;
     margin: 0 20px;
 
-    background-color: rgba(240, 241, 243, 5%);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-
-    border: 1px rgb(150, 150, 150, 30%) solid;
-
     gap: 10px
 }
 
 .pages{
-    background-color: rgba(128, 128, 128, 10%);;
+    background-color: white;
     height: 100%;
     width: 50px;
     color:black;
+
+    border-radius: 15px;
 }
 
 .pages:hover{
     transform: translateY(-2px);
 
-    background-color: rgba(128, 128, 128, 20%);
+    background-color: rgba(255,255,255,50%);
 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(255,255,255,50%);
 }
 
 .pages:active{

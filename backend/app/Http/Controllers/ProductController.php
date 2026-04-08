@@ -98,7 +98,14 @@ class ProductController extends Controller
     public function buy(string $id)
     {
         $product = $this->product->findOrFail($id);
-        $product->quantidade = $product->quantidade-1;
+
+        if ($product->quantidade <= 0) {
+            return response()->json(['message' => 'Produto esgotado'], 400);
+        }
+
+        $product->quantidade -= 1;
         $product->save();
+
+        return response()->json(['message' => 'Compra realizada com sucesso', 'quantidade' => $product->quantidade], 200);
     }
 }

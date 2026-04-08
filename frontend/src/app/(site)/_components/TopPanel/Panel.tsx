@@ -6,11 +6,12 @@ import { useState, useEffect } from 'react';
 import styles from './Panel.module.css'
 import ProductCardSale from './ProductCardSale'
 import Image from 'next/image'
+import { useCategory } from "@/app/(site)/_components/Navbar/CategoryContext";
 
 export default function Panel(){
 
     const [products, setProducts] = useState<sportsItemType[]>([]);
-    const ITENS_MAX = 1;
+    const ITENS_MAX = 8;
     const [paginaAtual, setPaginaAtual] = useState(0);
 
     useEffect(()=>{
@@ -33,13 +34,19 @@ export default function Panel(){
 
     const produtosPagina = products.slice(inicio, fim);
 
+    const { setSearch } = useCategory();
+    
+    function filtroDireto(nome: string) {
+        setSearch((prev) => prev === nome ? "" : nome);
+    }
+
     
     return(
         <section className={styles.painelGeral}>
 
             <div className={styles.banner}>
 
-
+                <img src="/assets/images/banner.jpg" alt="banner" className={styles.bannerImg}/>
                 
             </div>
 
@@ -48,8 +55,7 @@ export default function Panel(){
 
                 <div className={styles.listaProdutosInterna}>
                     {
-                        produtosPagina.map((produto) => (<ProductCardSale key={produto.id} {...produto}/>))
-                
+                        produtosPagina.map((produto) => (<ProductCardSale nome={produto.name} compraPainel={()=>filtroDireto(produto.name)} key={produto.id}/>))
                     }
                     
                 </div>

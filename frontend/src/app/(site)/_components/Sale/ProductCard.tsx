@@ -1,4 +1,3 @@
-import { api } from '@/services/api';
 import styles from './Sale.module.css';
 import { sportsItemType } from '@/types/sportsItem';
 
@@ -8,7 +7,6 @@ type Props = sportsItemType & {
 
 export default function ProductCard(produto: Props){
 
-    
     return(
        <div className={styles.produto}>
             <div className={styles.imagemContainer}>
@@ -24,7 +22,7 @@ export default function ProductCard(produto: Props){
                 <p className={styles.preco}>R$ {produto.preco}</p>
                 <p className={styles.categoria}>{produto.category.name}</p>
 
-                <button className={`${styles.botaoCompra} ${produto.quantidade === 0 ? styles.esgotado : ''}`} disabled={produto.quantidade === 0} onClick={()=>produto.artigoEsportivoCompra(produto.id)}>
+                <button className={`${styles.botaoCompra} ${produto.quantidade <= 0 ? styles.esgotado : ''}`} disabled={produto.quantidade <= 0} onClick={()=>produto.artigoEsportivoCompra(produto.id)}>
                     {produto.quantidade > 0 ? 'Comprar' : 'Indisponível'}
                 </button>
             </div>

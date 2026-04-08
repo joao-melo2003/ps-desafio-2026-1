@@ -1,10 +1,18 @@
-import { sportsItemType } from '@/types/sportsItem'
+import { useCategory } from '../Navbar/CategoryContext';
 import styles from './Panel.module.css'
 
-export default function ProductCardSale({name}: sportsItemType){
+type Props = {
+    nome: string;
+    compraPainel: () => void;
+}
+
+export default function ProductCardSale({nome,compraPainel}:Props){
+
+    const { search } = useCategory();
     return(
         
-        <p className={styles.produtos}>{name}</p>
-        
+        <div onClick={compraPainel} className={`${styles.produtoFiltro} ${search === nome ? styles.ativo : ""}`}>
+            <p className={styles.produtos}>{nome}</p>
+        </div>
     )
 }
