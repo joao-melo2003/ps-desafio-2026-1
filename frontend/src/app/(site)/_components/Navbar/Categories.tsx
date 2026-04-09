@@ -57,8 +57,8 @@ export default function Categories(){
             </div>
 
             {open && (
-                <div className={styles.overlayCategoria}>
-                    <div className={styles.popupCategorias}>
+                <div className={styles.overlayCategoria} onClick={() => setOpen(false)}>
+                    <div className={styles.popupCategorias} onClick={(e) => e.stopPropagation()}>
 
                         <h2>Categorias</h2>
 

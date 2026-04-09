@@ -1,6 +1,6 @@
 .painelGeral {
 
-    background-color: rgba(255,255,255,20%);
+    background-color: rgba(255, 255, 255, 20%);
 
     height: 230px;
     width: 98%;
@@ -70,11 +70,12 @@
 }
 
 
-.setaEsquerda, .setaDireita {
+.setaEsquerda,
+.setaDireita {
     position: absolute;
     top: 0;
     height: 100%;
-    width: 40px; 
+    width: 40px;
 
     display: flex;
     justify-content: center;
@@ -121,7 +122,7 @@
 }
 
 .botaoSeta:hover {
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .botaoSeta:active {
@@ -164,7 +165,7 @@
 
     .painelGeral {
 
-        margin-left:5px;
+        margin-left: 5px;
         margin-top: 0;
 
     }
@@ -174,5 +175,9 @@
 @media (max-width: 400px) {
     .banner {
         height: 100px;
+    }
+
+    .produtos {
+        font-size: small;
     }
 }

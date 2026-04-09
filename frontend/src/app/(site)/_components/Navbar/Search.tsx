@@ -46,8 +46,8 @@ export default function Search(){
 
             
             {open && (
-                <div className={styles.overlay}>
-                    <div className={styles.popup}>
+                <div className={styles.overlay} onClick={() => setOpen(false)}>
+                    <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
                         <input type="text"id="buscaMobile" placeholder="Pesquisar..."defaultValue={search} onKeyDown={handleSearch}/>
 
                         <button onClick={buscaMobile}>
