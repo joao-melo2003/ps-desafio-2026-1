@@ -1,16 +1,18 @@
 "use client";
 
 import styles from './Navbar.module.css'
-import Image from 'next/image'
+import { useState } from 'react';
 import { useCategory } from "./CategoryContext";
 
 export default function Search(){
 
     const { search, setSearch } = useCategory();
+    const [open, setOpen] = useState(false);
 
     function handleSearch(e: React.KeyboardEvent<HTMLInputElement>) {
         if (e.key === "Enter") {
             setSearch((e.target as HTMLInputElement).value);
+            setOpen(false);
         }
     }
 
@@ -19,16 +21,41 @@ export default function Search(){
         setSearch(input.value);
     }
 
-    return(
-        <div className={styles.conteinerBusca}>
-            <input type='text' id='busca'className={styles.busca} placeholder="Pesquisar" defaultValue={search} onKeyDown={handleSearch}/>
+    function handleLupaClick() {
+        if (window.innerWidth <= 600) setOpen(true); 
+        else handleClick(); 
+    }   
 
-            <div className={styles.lupa}>
-                <button onClick={handleClick}>
-                    <img src = '/assets/images/Lupa.png' alt='Logo'></img>
-                </button>
+    function buscaMobile() {
+        const input = document.getElementById("buscaMobile") as HTMLInputElement;
+        setSearch(input.value);
+        setOpen(false);
+    }
+
+    return(
+        <>
+            <div className={styles.conteinerBusca}>
+                <input type='text' id='busca'className={styles.busca} placeholder="Pesquisar" defaultValue={search} onKeyDown={handleSearch}/>
+
+                <div className={styles.lupa}>
+                    <button onClick={handleLupaClick}>
+                        <img src='/assets/images/Lupa.png' alt='Lupa'/>
+                    </button>
+                </div>
             </div>
-        </div>
+
+            
+            {open && (
+                <div className={styles.overlay}>
+                    <div className={styles.popup}>
+                        <input type="text"id="buscaMobile" placeholder="Pesquisar..."defaultValue={search} onKeyDown={handleSearch}/>
+
+                        <button onClick={buscaMobile}>
+                            <img src='/assets/images/Lupa.png' alt='Buscar'/>
+                        </button>
+                    </div>
+                </div>
+            )}
+        </>
     )
 }
-

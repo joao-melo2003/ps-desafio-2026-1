@@ -12,7 +12,13 @@ export default function Categories(){
 
     const { setCategoriaSelecionada } = useCategory();
 
+    const [open, setOpen] = useState(false);
+
     const [category, setProducts] = useState<categoryType[]>([]);
+
+    function filtroCategoria() {
+        if (window.innerWidth <= 510) setOpen(true);
+    }   
     
     useEffect(()=>{
         async function getCategory(){
@@ -32,7 +38,9 @@ export default function Categories(){
 
     return(
         <div className={styles.barraCategorias}>
-            <h1 className={styles.tituloCategorias}>Categorias</h1>
+            <div className={styles.conteinerTitulo}>
+                <h1 className={styles.tituloCategorias}>Categorias</h1>
+            </div>
             
             <div className={styles.listaNomeCategorias}>
                 {
@@ -41,6 +49,31 @@ export default function Categories(){
                     ))
                 }
             </div>
+            
+           <div className={styles.filtro}>
+                <button onClick={filtroCategoria}>
+                    <img src='/assets/images/filtro.png' alt="Filtro"/>
+                </button>
+            </div>
+
+            {open && (
+                <div className={styles.overlayCategoria}>
+                    <div className={styles.popupCategorias}>
+
+                        <h2>Categorias</h2>
+
+                        <div className={styles.listaPopup}>
+                            {categoriasOrdenadas.map((categoria) => (
+                                <CategoriesCard key={categoria.id}{...categoria} onClick={() => {setCategoriaSelecionada(prev => prev === categoria.id ? null : categoria.id);
+                                        setOpen(false);
+                                }}/>
+                            ))}
+                        </div>
+
+                    </div>
+                </div>
+            )}
+
         </div>
     )
 }
